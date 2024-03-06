@@ -1,0 +1,1 @@
+Write function writes >> ./files/text_1.txt
