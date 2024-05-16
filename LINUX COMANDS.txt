@@ -1,0 +1,38 @@
+
+
+LINUX COMANDS
+
+
+lsb_release -a     - check version ubuntu
+hostanmectl        - description and ID
+sudo pkill anydesk  - kill process
+lsusb - show usb
+lsblk - show discs
+sudo df -h   - show disc spaces
+
+
+Вписать текст в файл:
+
+!!! если файла нет то он будет создан.
+echo "text that we want to put in file" >> my_file.txt
+
+Mатематика в terminal
+expr '(' '3' '*' '4' ')' '+' '2' - можно двойные кавычки. Но лучше одинарные
+
+Булиевы опреции:
+expr '3' '<' '-2'
+вывод будет 0 или 1 тут нет true=1/false=0
+
+KERNEL lookup
+sysctl -a   - all params of sysctl 
+sysctl hw.memsize - RAM
+
+
+
+
+Больше команд тут:
+
+https://developer.apple.com/library/archive/documentation/OpenSource/Conceptual/ShellScripting/CommandLInePrimer/CommandLine.html
+--------------------------------
+Есть такая штука очень нужная !
+https://cheat.sh 
