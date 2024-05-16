@@ -1,0 +1,66 @@
+Задание
+1. Необходимо создать таблицу на сервере MSSQL с 3 столбцами
+2. Реализовать загрузку данных на сервер через VBA или Python через UI. При реализации на
+Python можно использовать любой UI framework
+3. Сделать хранимую процедуру на MS SQL сервере для выгрузки данных за определенный
+период.
+4. Реализовать возможность указывать период от до (на форме VBA или значения в Excel, на
+выбранной UI framework форме) и результат хранимой процедуры из 3 пункта выгружать в
+новую книгу Excel. Так же реализовать форматирование отчета (закрепление шапки и
+формат столбцов)
+5. Отчет должен содержать столбцы: Год, Месяц, Артикул, средние продажи за год и месяц,
+доля продаж артикула за выбранный период
+6. Логика отчета с расчетом средних продаж и доли продаж должна быть реализована в
+хранимой процедуре
+
+
+
+
+--------------------
+
+запустить докер контейнер с экземпляром MSSQL
+
+docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=SuperStrongPass2022" -e "MSSQL_PID=Evaluation" -p 1433:1433  --name sqlpreview --hostname sqlpreview -d mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+
+legit command - reading from .env
+docker run --env-file /Users/ewan/Desktop/cherkiz/app/.env -p 1433:1433  --name mssql_cont --hostname mssql_cont -d mcr.microsoft.com/mssql/server:2019-CU14-ubuntu-20.04
+
+создать таблицу item:
+                dt(datetime)     article(numeric)    kg(float)
+
+
+
+
+
+Написать код для приложения Fastapi:
+ ORM модель item
+    поля согласно таблицы
+
+
+
+
+эндпоинты(ручки): https://fastapi.tiangolo.com/advanced/custom-response/
+    загрузка данных из файла xml    https://pypi.org/project/openpyxl/   or     https://pypi.org/project/XlsxWriter/
+    выгрузка файла xml:
+        возможность редактировать отчет (менять имя отчета шапка)
+        период от и до
+        порядок столбцов DT:ART:KG - ART:KG:DT - KG:DT:ART ...
+
+
+
+
+по итогу написать docker compose файл и задеплоить в ажуре(azure) https://signup.azure.com/screen
+
+            docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=yourStrong(!)Password" -e "MSSQL_PID=Evaluation" -p 1433:1433  --name sqlpreview --hostname sqlpreview -d mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+
+
+Хранимые процедуры (запросы SQL ) # https://learn.microsoft.com/ru-ru/sql/relational-databases/stored-procedures/create-a-stored-procedure?view=sql-server-ver16
+
+        SELECT dt,article, kg FROM items WHERE dt BETWEEN('2009-10-20 00:00:00' AND '2009-10-20 23:59:59');
+        https://learn.microsoft.com/ru-ru/sql/t-sql/language-elements/between-transact-sql?view=sql-server-ver16
+
+
+
+
+Будет время написать фронтенд приложение для всего этого... как приятный бонус
+        
