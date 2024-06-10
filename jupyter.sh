@@ -1,1 +1,0 @@
-cd Desktop/jupyter && jupyter lab
